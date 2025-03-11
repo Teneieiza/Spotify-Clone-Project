@@ -3,3 +3,25 @@ export type ExamInput = {
   lastname: string
   age: number
 }
+
+export interface ExamData extends ExamInput{
+  id: number
+}
+
+export interface CreateExamType {
+  data: {
+    createExam: ExamData
+  }
+}
+
+export interface EditExamType {
+  data: {
+    editExam: ExamData
+  }
+}
+
+export interface DeleteExamType {
+  data: {
+    deleteExam: ExamData
+  }
+}
