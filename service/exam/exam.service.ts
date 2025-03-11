@@ -1,6 +1,6 @@
-import { gql } from "@apollo/client";
-import client from "../graphql";
-import { ExamInput } from "./exam.type";
+import { gql } from '@apollo/client'
+import client from '../graphql'
+import { ExamInput } from './exam.type'
 
 //GraphQL Method CRUD
 //***GraphQL can use Only POST Method***/
@@ -8,25 +8,25 @@ import { ExamInput } from "./exam.type";
 //Method GET
 //Get All data
 export async function getExamAllService() {
-    const { data } = await client.query({
-      query: gql`
-        query {
-          examAll {
-            id
-            firstname
-            lastname
-            age
-          }
+  const { data } = await client.query({
+    query: gql`
+      query {
+        examAll {
+          id
+          firstname
+          lastname
+          age
         }
-      `,
-      fetchPolicy: "no-cache",
-    });
-
-    return {
-      data: {
-        examAll: data.examAll,
       }
-    }
+    `,
+    fetchPolicy: 'no-cache',
+  })
+
+  return {
+    data: {
+      examAll: data.examAll,
+    },
+  }
 }
 
 //Method GET
@@ -43,12 +43,12 @@ export async function getExamOneService(id: number) {
         }
       }
     `,
-  });
+  })
 
   return {
     data: {
       examOne: data.examOne,
-    }
+    },
   }
 }
 
@@ -68,20 +68,19 @@ export async function createExamService(createExamInput: ExamInput) {
     `,
     variables: {
       input: createExamInput,
-    }
-  });
+    },
+  })
 
   return {
     data: {
       createExam: data.createExam,
-    }
+    },
   }
 }
 
-
 //Method PUT
 //Edit data by ID and variables
-export async function editExamService(id:number, editExamInput: ExamInput) {
+export async function editExamService(id: number, editExamInput: ExamInput) {
   const { data } = await client.mutate({
     mutation: gql`
       mutation EditExam($input: ExamInput!) {
@@ -95,19 +94,19 @@ export async function editExamService(id:number, editExamInput: ExamInput) {
     `,
     variables: {
       input: editExamInput,
-    }
-  });
+    },
+  })
 
   return {
     data: {
       editExam: data.editExam,
-    }
+    },
   }
 }
 
 //Method Delete
 //Delete data by ID
-export async function deleteExamService(id:number) {
+export async function deleteExamService(id: number) {
   const { data } = await client.mutate({
     mutation: gql`
       mutation {
@@ -119,11 +118,11 @@ export async function deleteExamService(id:number) {
         }
       }
     `,
-  });
+  })
 
   return {
     data: {
       deleteExam: data.deleteExam,
-    }
+    },
   }
 }
