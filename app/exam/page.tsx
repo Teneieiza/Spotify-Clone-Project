@@ -10,11 +10,11 @@ import { useEffect, useState } from 'react'
 import { CreateExamType, DeleteExamType, EditExamType } from './exam.interface'
 
 export default function ExamPage() {
-  const [examAllData, setExamAllData] = useState(null);
-  const [examOneData, setExamOneData] = useState(null);
-  const [createExam, setCreateExam] = useState<CreateExamType | null>(null);
-  const [editExam, setEditExam] = useState<EditExamType | null>(null);
-  const [deleteExam, setDeleteExam] = useState<DeleteExamType | null>(null);
+  const [examAllData, setExamAllData] = useState(null)
+  const [examOneData, setExamOneData] = useState(null)
+  const [createExam, setCreateExam] = useState<CreateExamType | null>(null)
+  const [editExam, setEditExam] = useState<EditExamType | null>(null)
+  const [deleteExam, setDeleteExam] = useState<DeleteExamType | null>(null)
 
   // Fetch ExamAll & ExamOne
   async function fetchExamData() {
@@ -22,18 +22,18 @@ export default function ExamPage() {
       const [examAll, examOne] = await Promise.all([
         getExamAllService(),
         getExamOneService(2),
-      ]);
-  
-      setExamAllData(examAll.data.examAll);
-      setExamOneData(examOne.data.examOne);
+      ])
+
+      setExamAllData(examAll.data.examAll)
+      setExamOneData(examOne.data.examOne)
     } catch (error) {
-      console.error('Error fetching exam data:', error);
+      console.error('Error fetching exam data:', error)
     }
   }
 
   useEffect(() => {
-    fetchExamData();
-  }, []);
+    fetchExamData()
+  }, [])
 
   // Create Exam
   async function handleCreateExam() {
@@ -44,15 +44,13 @@ export default function ExamPage() {
         age: 2,
       })
 
-      setCreateExam(newExam);
-      console.log('Create Exam Complete!', newExam);
-      const updatedExamAll = await getExamAllService();
-      setExamAllData(updatedExamAll.data.examAll);
+      setCreateExam(newExam)
+      console.log('Create Exam Complete!', newExam)
+      const updatedExamAll = await getExamAllService()
+      setExamAllData(updatedExamAll.data.examAll)
     } catch (error) {
       console.error('Error creating exam:', error)
     }
-
-    
   }
 
   // Edit Exam
@@ -64,10 +62,10 @@ export default function ExamPage() {
         age: 2,
       })
 
-      setEditExam(editExam);
-      console.log('Edit Exam Complete!', editExam);
-      const updatedExamAll = await getExamAllService();
-      setExamAllData(updatedExamAll.data.examAll);
+      setEditExam(editExam)
+      console.log('Edit Exam Complete!', editExam)
+      const updatedExamAll = await getExamAllService()
+      setExamAllData(updatedExamAll.data.examAll)
     } catch (error) {
       console.error('Error editing exam:', error)
     }
@@ -78,18 +76,18 @@ export default function ExamPage() {
     try {
       const deletedExam = await deleteExamService(3)
 
-      setDeleteExam(deletedExam);
-      console.log('Delete Exam Complete!', deletedExam);
-      const updatedExamAll = await getExamAllService();
-      setExamAllData(updatedExamAll.data.examAll);
+      setDeleteExam(deletedExam)
+      console.log('Delete Exam Complete!', deletedExam)
+      const updatedExamAll = await getExamAllService()
+      setExamAllData(updatedExamAll.data.examAll)
     } catch (error) {
       console.error('Error deleting exam:', error)
     }
   }
 
   return (
-    <div className="flex flex-col h-full w-full items-center justify-center gap-6">
-      <div className="underline underline-offset-4 text-xl">
+    <div className="flex h-full w-full flex-col items-center justify-center gap-6">
+      <div className="text-xl underline underline-offset-4">
         <h1>Example for GraphQL</h1>
       </div>
       <div className="flex h-full w-full items-start justify-center gap-6">

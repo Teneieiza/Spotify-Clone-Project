@@ -1,24 +1,24 @@
 export interface ExamData {
-  id: number;
-  firstname: string;
-  lastname: string;
-  age: number;
+  id: number
+  firstname: string
+  lastname: string
+  age: number
 }
 
 export interface CreateExamType {
   data: {
-    createExam: ExamData;
-  };
+    createExam: ExamData
+  }
 }
 
 export interface EditExamType {
   data: {
-    editExam: ExamData;
-  };
+    editExam: ExamData
+  }
 }
 
 export interface DeleteExamType {
   data: {
-    deleteExam: ExamData;
-  };
+    deleteExam: ExamData
+  }
 }
