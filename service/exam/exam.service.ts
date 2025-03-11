@@ -19,6 +19,7 @@ export async function getExamAllService() {
           }
         }
       `,
+      fetchPolicy: "no-cache",
     });
 
     return {
