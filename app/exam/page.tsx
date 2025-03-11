@@ -7,7 +7,7 @@ import {
   getExamOneService,
 } from '@/service/exam/exam.service'
 import { useEffect, useState } from 'react'
-import { CreateExamType, DeleteExamType, EditExamType } from './exam.interface'
+import { CreateExamType, DeleteExamType, EditExamType } from '@/service/exam/exam.type'
 
 export default function ExamPage() {
   const [examAllData, setExamAllData] = useState(null)
